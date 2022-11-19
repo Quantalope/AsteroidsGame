@@ -1,15 +1,38 @@
-class Spaceship extends Floater
+Floater[] floats = new Floater[1];
+Star[] stars = new Star[20];
+public void setup()
 {
-  public Spaceship()
+  background(0);
+  size(500,500);
+  floats[0] = new Spaceship();
+  for(int i = 0; i<stars.length; i++)
   {
-    corners = 11;
-    xCorners = new int[]{-14,2,8,13,8,2,-13,-9,-18,-18,-9};
-    yCorners = new int[]{-8,-7,-4,0,4,7,8,4,1,-1,-4};
-    myCenterX = width/2;
-    myCenterY = height/2;
-    myXspeed = 0;
-    myYspeed = 0;
-    myPointDirection = 0;
-    myColor = 255;
+    stars[i] = new Star();
+  }
+}
+public void draw()
+{
+  fill(0);
+  rect(0,0,500,500);
+  fill(255);
+  floats[0].show();
+  floats[0].move();
+  for(int i = 0; i<stars.length; i++)
+  {
+    stars[i].show();
+  }
+}
+public void keyPressed()
+{
+  if(key==CODED)
+  {
+    if(keyCode==UP)
+      floats[0].accelerate(1);
+    if(keyCode==DOWN)
+      floats[0].accelerate(-1);
+    if(keyCode==LEFT)
+      floats[0].turn(-10);
+    if(keyCode==RIGHT)
+      floats[0].turn(10);
   }
 }
