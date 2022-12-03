@@ -1,4 +1,5 @@
 Star[] stars = new Star[20];
+ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
 Spaceship player = new Spaceship();
 public void setup()
 {
@@ -7,6 +8,11 @@ public void setup()
   for(int i = 0; i<stars.length; i++)
   {
     stars[i] = new Star();
+  }
+  for(int i = 0; i<10; i++)
+  {
+    Asteroid asteroid = new Asteroid();
+    asteroids.add(i, asteroid);
   }
 }
 public void draw()
@@ -20,19 +26,43 @@ public void draw()
   {
     stars[i].show();
   }
+  for(int i = 0; i<asteroids.size(); i++)
+  {
+    asteroids.get(i).move();
+    asteroids.get(i).show();
+    if(asteroids.get(i).collision())
+    {
+      asteroids.remove(i);
+      i--;
+    }
+  }
 }
 public void keyPressed()
 {
   if(key==CODED)
   {
     if(keyCode==UP)
-      player.accelerate(1);
+      player.up(true);
     if(keyCode==DOWN)
-      player.accelerate(-1);
+      player.down(true);
     if(keyCode==LEFT)
-      player.turn(-10);
+      player.left(true);
     if(keyCode==RIGHT)
-      player.turn(10);
+      player.right(true);
+  }
+}
+public void keyReleased()
+{
+  if(key==CODED)
+  {
+    if(keyCode==UP)
+      player.up(false);
+    if(keyCode==DOWN)
+      player.down(false);
+    if(keyCode==LEFT)
+      player.left(false);
+    if(keyCode==RIGHT)
+      player.right(false);
     if(keyCode==SHIFT)
       player.hyperspace();
   }
