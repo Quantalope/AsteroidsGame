@@ -41,28 +41,14 @@ public void keyPressed()
 {
   if(key==CODED)
   {
-    if(keyCode==UP_ARROW)
-      player.up(true);
-    if(keyCode==DOWN_ARROW)
-      player.down(true);
-    if(keyCode==LEFT_ARROW)
-      player.left(true);
-    if(keyCode==RIGHT_ARROW)
-      player.right(true);
-  }
-}
-public void keyReleased()
-{
-  if(key==CODED)
-  {
-    if(keyCode==UP_ARROW)
-      player.up(false);
-    if(keyCode==DOWN_ARROW)
-      player.down(false);
-    if(keyCode==LEFT_ARROW)
-      player.left(false);
-    if(keyCode==RIGHT_ARROW)
-      player.right(false);
+    if(keyCode==UP)
+      player.accelerate(0.2);
+    if(keyCode==DOWN)
+      player.accelerate(-0.2);
+    if(keyCode==LEFT)
+      player.turn(-5);
+    if(keyCode==RIGHT)
+      player.turn(5);
     if(keyCode==SHIFT)
       player.hyperspace();
   }
