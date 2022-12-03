@@ -36,7 +36,10 @@ public void draw()
       i--;
     }
   }
-  if(keyIsPressed)
+}
+public void keyPressed()
+{
+  if(key==CODED)
   {
     if(keyCode==UP)
       player.up(true);
@@ -46,8 +49,6 @@ public void draw()
       player.left(true);
     if(keyCode==RIGHT)
       player.right(true);
-  }
-}
   }
 }
 public void keyReleased()
