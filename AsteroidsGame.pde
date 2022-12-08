@@ -1,8 +1,10 @@
 Star[] stars = new Star[20];
 ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
+ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 Spaceship player = new Spaceship();
 public void setup()
 {
+  smooth();
   background(0);
   size(500,500);
   for(int i = 0; i<stars.length; i++)
@@ -24,32 +26,62 @@ public void draw()
   player.move();
   for(int i = 0; i<stars.length; i++)
   {
-    stars[i].show();
+    stars[i].shmoove();
   }
   for(int i = 0; i<asteroids.size(); i++)
   {
     asteroids.get(i).move();
+    strokeWeight(4);
     asteroids.get(i).show();
+    strokeWeight(1);
     if(asteroids.get(i).collision())
     {
       asteroids.remove(i);
       i--;
     }
   }
+  for(int i = 0; i<bullets.size(); i++)
+    {
+      bullets.get(i).show();
+      bullets.get(i).move();
+      if(bullets.get(i).myCenterX > width || bullets.get(i).myCenterX<0 || bullets.get(i).myCenterY >height || bullets.get(i).myCenterY < 0)
+      {     
+        bullets.remove(i);
+      }
+    }
 }
 public void keyPressed()
 {
   if(key==CODED)
   {
     if(keyCode==UP)
-      player.accelerate(0.2);
+      player.up(true);
     if(keyCode==DOWN)
-      player.accelerate(-0.2);
+      player.down(true);
     if(keyCode==LEFT)
-      player.turn(-5);
+      player.left(true);
     if(keyCode==RIGHT)
-      player.turn(5);
+      player.right(true);     
+  }
+}
+public void keyReleased()
+{
+  if(key==CODED)
+  {
+    if(keyCode==UP)
+      player.up(false);
+    if(keyCode==DOWN)
+      player.down(false);
+    if(keyCode==LEFT)
+      player.left(false);
+    if(keyCode==RIGHT)
+      player.right(false);
     if(keyCode==SHIFT)
-      player.hyperspace();
+      player.hyperspace();      
+  }
+  if(key == ' ')
+  {
+    Bullet bullet = new Bullet(player);
+    bullets.add(bullet);
   }
 }
