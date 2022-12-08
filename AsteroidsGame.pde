@@ -39,8 +39,11 @@ public void draw()
       if(asteroids.size()>i&&asteroids.get(i).collision(bullets.get(s)))
       {
         asteroids.remove(i);
+        bullets.remove(s);
       }
     }
+    if(player.collision(asteroids.get(i)))
+      i++;
   }
   for(int i = 0; i<bullets.size(); i++)
     {
