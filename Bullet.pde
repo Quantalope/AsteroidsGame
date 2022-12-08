@@ -2,9 +2,6 @@ class Bullet extends Floater
 {
   public Bullet(Spaceship ship)
   {
-    //corners = 3;
-    //xCorners = new int[]{5,0,-5};
-    //yCorners = new int[]{-5,5,-5};
     myColor = 255;
     myCenterX = ship.myCenterX;
     myCenterY = ship.myCenterY;
