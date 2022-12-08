@@ -38,8 +38,12 @@ class Asteroid extends Floater
   {
     float one = (float)myCenterX-15;
     float two = (float)myCenterY-15;
-    if(one<player.myCenterX&&two<player.myCenterY&&one+30>player.myCenterX&&two+30>player.myCenterY)
-      return true;
-    else return false;
+    for(int i = 0; i<bullets.size(); i++)
+    {
+      if(one<bullets.get(i).myCenterX&&two<bullets.get(i).myCenterY&&one+30>bullets.get(i).myCenterX&&two+30>bullets.get(i).myCenterY)
+        return true;
+      else return false;
+    }
+    return false;
   }
 }
