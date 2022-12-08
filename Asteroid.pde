@@ -34,14 +34,17 @@ class Asteroid extends Floater
     turn(rotSpeed);
     super.move();
   }
-  public boolean collision()
+  public boolean collision(Bullet bull)
   {
     float one = (float)myCenterX-15;
     float two = (float)myCenterY-15;
-    for(int i = 0; i<bullets.size(); i++)
+    for(int s = 0; s<bullets.size(); s++)
     {
-      if(one<bullets.get(i).myCenterX&&two<bullets.get(i).myCenterY&&one+30>bullets.get(i).myCenterX&&two+30>bullets.get(i).myCenterY)
+      if(one<bull.myCenterX&&two<bull.myCenterY&&one+30>bull.myCenterX&&two+30>bull.myCenterY)
+      {
+        bullets.remove(s);
         return true;
+      }
       else return false;
     }
     return false;
