@@ -34,10 +34,12 @@ public void draw()
     strokeWeight(4);
     asteroids.get(i).show();
     strokeWeight(1);
-    if(asteroids.get(i).collision())
-    {
-      asteroids.remove(i);
-      i--;
+    for(int s = 0; s < bullets.size(); s++)
+    {  
+      if(asteroids.size()>i&&asteroids.get(i).collision(bullets.get(s)))
+      {
+        asteroids.remove(i);
+      }
     }
   }
   for(int i = 0; i<bullets.size(); i++)
@@ -47,6 +49,7 @@ public void draw()
       if(bullets.get(i).myCenterX > width || bullets.get(i).myCenterX<0 || bullets.get(i).myCenterY >height || bullets.get(i).myCenterY < 0)
       {     
         bullets.remove(i);
+        i--;
       }
     }
 }
@@ -54,12 +57,12 @@ public void keyPressed()
 {
   if(key==CODED)
   {
+    if(keyCode==LEFT)
+      player.left(true);
     if(keyCode==UP)
       player.up(true);
     if(keyCode==DOWN)
       player.down(true);
-    if(keyCode==LEFT)
-      player.left(true);
     if(keyCode==RIGHT)
       player.right(true);     
   }
