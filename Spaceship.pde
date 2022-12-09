@@ -1,47 +1,58 @@
-class Asteroid extends Floater
+class Spaceship extends Floater
 {
-  private float rotSpeed;
-  public Asteroid()
+  private boolean left, right, up, down;
+  public Spaceship()
   {
-    rotSpeed = (float)Math.random();
-    corners = 7;
-    xCorners = new int[7];
-    yCorners = new int[7];
-    xCorners[0] = (int)(Math.random()*15+5);
-    xCorners[1] = (int)(Math.random()*15);
-    xCorners[2] = (int)(Math.random()*-5);
-    xCorners[3] = (int)(Math.random()*-15-5);
-    xCorners[4] = (int)(Math.random()*-15);
-    xCorners[5] = (int)(Math.random()*15);
-    xCorners[6] = (int)(Math.random()*15+5);
-    yCorners[0] = (int)(Math.random()*15);
-    yCorners[1] = (int)(Math.random()*15+5);
-    yCorners[2] = (int)(Math.random()*15);
-    yCorners[3] = (int)(Math.random()*-15);
-    yCorners[4] = (int)(Math.random()*-15-5);
-    yCorners[5] = (int)(Math.random()*-15);
-    yCorners[6] = (int)(Math.random()*15);
-    myCenterX = Math.random()*width;
-    myCenterY = Math.random()*height;
+    corners = 11;
+    xCorners = new int[]{-14,2,8,13,8,2,-13,-9,-18,-18,-9};
+    yCorners = new int[]{-8,-7,-4,0,4,7,8,4,1,-1,-4};
+    myCenterX = 250;
+    myCenterY = 250;
     myXspeed = 0;
     myYspeed = 0;
+    myPointDirection = 0;
+    myColor = 255;
+  }
+  public void hyperspace()
+  {
+    myXspeed = 0;
+    myYspeed = 0;
+    myCenterX = Math.random()*500;
+    myCenterY = Math.random()*500;
     myPointDirection = Math.random()*360;
-    myColor = 100;
-    accelerate(1);
+  }
+  public void left(boolean active)
+  {
+    left=active;
+  }
+  public void right(boolean active)
+  {
+    right=active;
+  }
+  public void up(boolean active)
+  {
+    up=active;
+  }
+  public void down(boolean active)
+  {
+    down=active;
   }
   public void move()
   {
-    turn(rotSpeed);
+    if(left){turn(-5);}
+    if(right){turn(5);}
+    if(up){accelerate(.2);}
+    if(down){myXspeed/=1.05; myYspeed/=1.05;}
+    if(myXspeed > 5)
+      myXspeed = 5;
+    if(myYspeed > 5)
+      myYspeed = 5;
+      if(myXspeed < -5)
+      myXspeed = -5;
+    if(myYspeed < -5)
+      myYspeed = -5;
     super.move();
-  }
-  public boolean collision(Bullet bull)
-  {
-    float one = (float)myCenterX-15;
-    float two = (float)myCenterY-15;
-    if(one<bull.myCenterX&&two<bull.myCenterY&&one+30>bull.myCenterX&&two+30>bull.myCenterY)
-    {
-      return true;
-    }
-    return false;
+    myXspeed = myXspeed/1.01;
+    myYspeed = myYspeed/1.01;
   }
 }
