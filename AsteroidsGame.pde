@@ -1,9 +1,10 @@
 Star[] stars = new Star[20];
 ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
 ArrayList <Bullet> bullets = new ArrayList <Bullet>();
-Spaceship player = new Spaceship();
+Spaceship player;
 public void setup()
 {
+  player = new Spaceship();
   smooth();
   background(0);
   size(500,500);
@@ -30,31 +31,36 @@ public void draw()
   }
   for(int i = 0; i<asteroids.size(); i++)
   {
+    boolean yeet = false;
     asteroids.get(i).move();
     strokeWeight(4);
     asteroids.get(i).show();
     strokeWeight(1);
+    asteroids.get(i).collision(player);
     for(int s = 0; s < bullets.size(); s++)
     {  
-      if(asteroids.size()>i&&asteroids.get(i).collision(bullets.get(s)))
+      if(asteroids.get(i).collision(bullets.get(s)))
       {
-        asteroids.remove(i);
+        yeet = true;
         bullets.remove(s);
       }
     }
-    if(player.collision(asteroids.get(i)))
-      i++;
+    if(yeet == true)
+    {
+      asteroids.get(i).yeet(i);
+      i--;
+    }
   }
   for(int i = 0; i<bullets.size(); i++)
-    {
-      bullets.get(i).show();
-      bullets.get(i).move();
-      if(bullets.get(i).myCenterX > width || bullets.get(i).myCenterX<0 || bullets.get(i).myCenterY >height || bullets.get(i).myCenterY < 0)
-      {     
-        bullets.remove(i);
-        i--;
-      }
+  {
+    bullets.get(i).show();
+    bullets.get(i).move();
+    if(bullets.get(i).myCenterX > width || bullets.get(i).myCenterX<0 || bullets.get(i).myCenterY >height || bullets.get(i).myCenterY < 0)
+    {     
+      bullets.remove(i);
+      i--;
     }
+  }
 }
 public void keyPressed()
 {
