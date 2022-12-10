@@ -1,24 +1,3 @@
-Star[] stars = new Star[20];
-ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
-ArrayList <Bullet> bullets = new ArrayList <Bullet>();
-Spaceship player;
-public void setup()
-{
-  player = new Spaceship();
-  smooth();
-  background(0);
-  size(500,500);
-  for(int i = 0; i<stars.length; i++)
-  {
-    stars[i] = new Star();
-  }
-  for(int i = 0; i<10; i++)
-  {
-    Asteroid asteroid = new Asteroid();
-    asteroids.add(i, asteroid);
-  }
-}
-public void draw()
 {
   fill(0);
   rect(0,0,500,500);
@@ -67,13 +46,13 @@ public void keyPressed()
   if(key==CODED)
   {
     if(keyCode==UP)
-      player.up(true);
+      player.up = true;
     if(keyCode==DOWN)
-      player.down(true);
+      player.down = true;
     if(keyCode==LEFT)
-      player.left(true);
+      player.left = true;
     if(keyCode==RIGHT)
-      player.right(true);
+      player.right = true;
   }
 }
 public void keyReleased()
@@ -81,15 +60,15 @@ public void keyReleased()
   if(key==CODED)
   {
     if(keyCode==UP)
-      player.up(false);
+      player.up = false;
     if(keyCode==DOWN)
-      player.down(false);
+      player.down = false;
     if(keyCode==LEFT)
-      player.left(false);
+      player.left = false;
     if(keyCode==RIGHT)
-      player.right(false);
+      player.right = false;
     if(keyCode==SHIFT)
-      player.hyperspace(false);      
+      player.hyperspace();      
   }
   if(key == ' ')
   {
@@ -97,4 +76,3 @@ public void keyReleased()
     bullets.add(bullet);
   }
 }
-
