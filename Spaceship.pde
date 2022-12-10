@@ -21,24 +21,12 @@ class Spaceship extends Floater
     myCenterY = Math.random()*500;
     myPointDirection = Math.random()*360;
   }
-  public void turnLeft(boolean active)
-  {
-    left=active;
-  }
-  public void turnRight(boolean active)
-  {
-    right=active;
-  }
-  public void speedUp(boolean active)
-  {
-    up=active;
-  }
-  public void slowDown(boolean active)
-  {
-    down=active;
-  }
   public void move()
   {
+    if(up)accelerate(0.2);
+    if(down){myXspeed/=1.05;myYspeed/=1.05;}
+    if(left)turn(-5);
+    if(right)turn(5);
     if(myXspeed > 5)
       myXspeed = 5;
     if(myYspeed > 5)
@@ -50,21 +38,5 @@ class Spaceship extends Floater
     super.move();
     myXspeed = myXspeed/1.01;
     myYspeed = myYspeed/1.01;
-  }
-  public void up(boolean on)
-  {
-    if(on){accelerate(.2);}
-  }
-  public void down(boolean on)
-  {
-    if(on){myXspeed/=1.05; myYspeed/=1.05;}
-  }
-  public void left(boolean on)
-  {
-    if(on){turn(-5);}
-  }
-  public void right(boolean on)
-  {
-    if(on){turn(5);}
   }
 }
