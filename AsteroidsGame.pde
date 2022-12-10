@@ -36,7 +36,7 @@ public void draw()
     strokeWeight(4);
     asteroids.get(i).show();
     strokeWeight(1);
-    asteroids.get(i).collision(player);
+    asteroids.get(i).coll(player);
     for(int s = 0; s < bullets.size(); s++)
     {  
       if(asteroids.get(i).collision(bullets.get(s)))
