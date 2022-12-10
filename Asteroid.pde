@@ -52,7 +52,7 @@ class Asteroid extends Floater
     if(one<ship.myCenterX&&two<ship.myCenterY&&one+30>ship.myCenterX&&two+30>ship.myCenterY)
     {
       textSize(90);
-      text("Game Over",0,100);
+      text("Game Over",20,100);
       exit();
     }
   }
