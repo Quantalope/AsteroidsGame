@@ -39,10 +39,6 @@ class Spaceship extends Floater
   }
   public void move()
   {
-    if(left){turn(-5);}
-    if(right){turn(5);}
-    if(up){accelerate(.2);}
-    if(down){myXspeed/=1.05; myYspeed/=1.05;}
     if(myXspeed > 5)
       myXspeed = 5;
     if(myYspeed > 5)
@@ -54,5 +50,22 @@ class Spaceship extends Floater
     super.move();
     myXspeed = myXspeed/1.01;
     myYspeed = myYspeed/1.01;
+  }
+  public void up()
+  {
+    accelerate(.2);
+  }
+  public void down()
+  {
+    myXspeed/=1.05; 
+    myYspeed/=1.05;
+  }
+  public void left()
+  {
+    turn(-5);
+  }
+  public void right()
+  {
+    turn(5);
   }
 }
