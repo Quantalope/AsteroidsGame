@@ -51,21 +51,20 @@ class Spaceship extends Floater
     myXspeed = myXspeed/1.01;
     myYspeed = myYspeed/1.01;
   }
-  public void up()
+  public void up(boolean on)
   {
-    accelerate(.2);
+    if(on){accelerate(.2);}
   }
-  public void down()
+  public void down(boolean on)
   {
-    myXspeed/=1.05; 
-    myYspeed/=1.05;
+    if(on){myXspeed/=1.05; myYspeed/=1.05;}
   }
-  public void left()
+  public void left(boolean on)
   {
-    turn(-5);
+    if(on){turn(-5);}
   }
-  public void right()
+  public void right(boolean on)
   {
-    turn(5);
+    if(on){turn(5);}
   }
 }
