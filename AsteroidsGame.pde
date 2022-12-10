@@ -1,3 +1,24 @@
+Star[] stars = new Star[20];
+ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
+ArrayList <Bullet> bullets = new ArrayList <Bullet>();
+Spaceship player;
+public void setup()
+{
+  player = new Spaceship();
+  smooth();
+  background(0);
+  size(500,500);
+  for(int i = 0; i<stars.length; i++)
+  {
+    stars[i] = new Star();
+  }
+  for(int i = 0; i<10; i++)
+  {
+    Asteroid asteroid = new Asteroid();
+    asteroids.add(i, asteroid);
+  }
+}
+public void draw()
 {
   fill(0);
   rect(0,0,500,500);
