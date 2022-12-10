@@ -45,7 +45,7 @@ class Asteroid extends Floater
     else
       return false;
   }
-  public void collision(Spaceship ship)
+  public void coll(Spaceship ship)
   {
     float one = (float)myCenterX-15;
     float two = (float)myCenterY-15;
