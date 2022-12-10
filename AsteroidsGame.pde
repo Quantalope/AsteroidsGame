@@ -66,28 +66,14 @@ public void keyPressed()
 {
   if(key==CODED)
   {
-    if(keyCode==LEFT)
-      player.left(true);
     if(keyCode==UP)
-      player.up(true);
+      player.up();
     if(keyCode==DOWN)
-      player.down(true);
-    if(keyCode==RIGHT)
-      player.right(true);     
-  }
-}
-public void keyReleased()
-{
-  if(key==CODED)
-  {
-    if(keyCode==UP)
-      player.up(false);
-    if(keyCode==DOWN)
-      player.down(false);
+      player.down();
     if(keyCode==LEFT)
-      player.left(false);
+      player.left();
     if(keyCode==RIGHT)
-      player.right(false);
+      player.right();
     if(keyCode==SHIFT)
       player.hyperspace();      
   }
