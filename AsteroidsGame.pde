@@ -61,6 +61,12 @@ public void draw()
       i--;
     }
   }
+  if(asteroids.size()==0)
+  {
+    textSize(90);
+    text("You Win",100,100);
+    exit();
+  }
 }
 public void keyPressed()
 {
