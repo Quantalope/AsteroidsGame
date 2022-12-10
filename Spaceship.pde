@@ -21,19 +21,19 @@ class Spaceship extends Floater
     myCenterY = Math.random()*500;
     myPointDirection = Math.random()*360;
   }
-  public void left(boolean active)
+  public void turnLeft(boolean active)
   {
     left=active;
   }
-  public void right(boolean active)
+  public void turnRight(boolean active)
   {
     right=active;
   }
-  public void up(boolean active)
+  public void speedUp(boolean active)
   {
     up=active;
   }
-  public void down(boolean active)
+  public void slowDown(boolean active)
   {
     down=active;
   }
