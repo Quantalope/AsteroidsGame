@@ -62,7 +62,7 @@ public void draw()
     }
   }
 }
-public void keyPressed()
+public void keyReleased()
 {
   if(key==CODED)
   {
