@@ -67,15 +67,29 @@ public void keyReleased()
   if(key==CODED)
   {
     if(keyCode==UP)
-      player.up();
+      player.up(true);
     if(keyCode==DOWN)
-      player.down();
+      player.down(true);
     if(keyCode==LEFT)
-      player.left();
+      player.left(true);
     if(keyCode==RIGHT)
-      player.right();
+      player.right(true);
+  }
+}
+public void keyReleased()
+{
+  if(key==CODED)
+  {
+    if(keyCode==UP)
+      player.up(false);
+    if(keyCode==DOWN)
+      player.down(false);
+    if(keyCode==LEFT)
+      player.left(false);
+    if(keyCode==RIGHT)
+      player.right(false);
     if(keyCode==SHIFT)
-      player.hyperspace();      
+      player.hyperspace(false);      
   }
   if(key == ' ')
   {
@@ -83,3 +97,4 @@ public void keyReleased()
     bullets.add(bullet);
   }
 }
+
